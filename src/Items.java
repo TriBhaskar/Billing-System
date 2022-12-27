@@ -19,6 +19,7 @@ public class Items {
 		}
 	static void show(){
 		System.out.println("Items \t \t Price"); 
+		System.out.println("------------------"); 
 		for(Map.Entry m : i.entrySet()){    
 		    System.out.printf("%-15s|  %3.2f \n",m.getKey(),m.getValue());
 		   }  

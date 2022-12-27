@@ -33,7 +33,7 @@ public class Cart {
 	 void showItem(){
 		 if(!cartItems.isEmpty()){
 		for(Map.Entry m : cartItems.entrySet()){    
-		    System.out.printf("%-15s---  %3.2f \n",m.getKey(),m.getValue());
+		    System.out.printf("%-15s     %3.2f    %d\n",m.getKey(),m.getValue(),ItemsQuantity.get(m.getKey()));
 		   } 
 		 }else{
 			 System.out.println("Your cart is empty");

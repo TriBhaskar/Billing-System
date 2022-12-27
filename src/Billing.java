@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -16,9 +18,9 @@ public class Billing {
 		
 		Items itemsObj = new Items();
 		Cart cartObj = new Cart();
-		System.out.println("|------------------------------------------------------------------------------------------|");
-		System.out.println("|------------------------------------------------------------------------------------------|");
-		System.out.println("\t\t==== WELCOME TO Sim+Emmo BILLING SYSTEM ==== ");
+		System.out.println("|--------------------------------------------------------------------------------------------------------|");
+		System.out.println("|--------------------------------------------------------------------------------------------------------|");
+		System.out.println("\t\t\t==== WELCOME TO SimEmmo BILLING SYSTEM ==== ");
 		
 		System.out.println("Enter Your Name : ");
 		custName = sc.next();
@@ -58,25 +60,26 @@ public class Billing {
 				System.out.println("Select the Correct Option");
 			}	
 		}while(ch>0);
+		java.util.Date date = new java.util.Date(); 
 		
 		if(!cartObj.cartItems.isEmpty()){
 			System.out.println("-----------------------------------------------------------------------------------------------------------");
-			System.out.println("Bill to - "+custName+"|");
+			System.out.println("Bill to - "+custName+"\t\t\t\t\t\t "+date);
 			System.out.println("-----------------------------------------------------------------------------------------------------------");
-			System.out.println("Item Name\t\tQuantity\t\tRate\t\tTotal Price");
+			System.out.println("Item Name\t\tRate\t\tQuantity\t\tTotal Price");
 			System.out.println("-----------------------------------------------------------------------------------------------------------");
 			
 			for(Map.Entry m: cartObj.cartItems.entrySet()){  
 				int quan=cartObj.ItemsQuantity.get(m.getKey());
 				double rate =(double) m.getValue();
 				double totalprice =  rate * quan;
-			    System.out.printf("%-18s---  %-19.2f --- %-19d --- %-18.2f \n",m.getKey(),m.getValue(),cartObj.ItemsQuantity.get(m.getKey()),totalprice);
+			    System.out.printf("%-18s     %-18.2f     %-18d     %-18.2f \n",m.getKey(),m.getValue(),cartObj.ItemsQuantity.get(m.getKey()),totalprice);
 			    totalamount = totalamount+totalprice;
 			   } 
-			System.out.printf("Total amount\t\t\t\t\t\t\t\tRs.%.2f \n",totalamount);
+			System.out.printf("Total amount\t\t\t\t\t\t\t  Rs.%.2f \n",totalamount);
 			double gst=0.08*totalamount;
-			System.out.printf("GST\t\t\t\t\t\t\t\t\tRs.%.2f \n",gst);
-			System.out.printf("Final amount\t\t\t\t\t\t\t\tRs.%.2f \n",(gst+totalamount));
+			System.out.printf("GST\t\t\t\t\t\t\t\t  Rs.%.2f \n",gst);
+			System.out.printf("Final amount\t\t\t\t\t\t\t  Rs.%.2f \n",(gst+totalamount));
 		}
 	}
 
